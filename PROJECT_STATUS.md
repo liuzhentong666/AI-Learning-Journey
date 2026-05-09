@@ -1,12 +1,12 @@
 # 项目状态总览
 
 **创建日期:** 2026-05-08  
-**当前进度:** Week 1 Day 1  
-**完成度:** 1/90 天 (1.1%)
+**当前进度:** Week 1 Day 2  
+**完成度:** 2/90 天 (2.2%)
 
 ## ✅ 已完成
 
-### Day 1 (2026-05-08)
+### Day 1 (2026-05-08) ✅
 - [x] 制定3个月学习计划
 - [x] 创建项目目录结构
 - [x] 初始化Git仓库
@@ -17,6 +17,17 @@
   - 03_gpu_basics.py - GPU基础
 - [x] 创建学习文档和指南
 - [x] 编写环境检查脚本
+
+### Day 2 (2026-05-09) 🔄
+- [x] 完成Day 1学习总结
+- [x] 创建Day 2学习资料
+- [x] 编写Day 2的3个练习脚本
+  - 01_basic_autograd.py - 自动微分基础
+  - 02_computational_graph.py - 计算图与梯度流
+  - 03_gradient_descent.py - 梯度下降实战
+- [x] 创建运行脚本和README
+- [ ] 运行所有练习代码
+- [ ] 完成学习日志
 
 ## 📝 文件清单
 
@@ -46,57 +57,54 @@
 ## 🎯 下一步行动
 
 ### 立即执行
-1. **设置GitHub仓库**
-   - 访问 https://github.com/new
-   - 创建仓库名为 `AI-Learning-Journey`
-   - 按照 `setup_github.md` 连接本地仓库
-   - 推送代码: `git push -u origin main`
-
-2. **安装Python环境**
+1. **运行Day 2练习**
    ```bash
-   # 检查环境
-   python check_environment.py
+   cd /mnt/f/AI-Learning-Journey
    
-   # 如果有缺失，安装依赖
-   pip install -r requirements.txt
-   ```
-
-3. **运行Day 1练习**
-   ```bash
    # 运行所有练习
-   ./run_day1.sh
+   ./run_day2.sh
    
    # 或逐个运行
-   cd week1-pytorch-basics/day1-tensor-basics
-   python 01_tensor_creation.py
-   python 02_tensor_operations.py
-   python 03_gpu_basics.py
+   cd week1-pytorch-basics/day2-autograd
+   python 01_basic_autograd.py
+   python 02_computational_graph.py
+   python 03_gradient_descent.py
    ```
 
-### 今日任务
-- [ ] 设置GitHub仓库并推送代码
-- [ ] 安装PyTorch环境
-- [ ] 运行Day 1的3个练习脚本
-- [ ] 理解张量的基本操作
+2. **学习和理解**
+   - 理解自动微分原理
+   - 掌握梯度计算方法
+   - 实现梯度下降算法
+   
+3. **更新学习日志**
+   - 编辑 `daily-logs/2026-05-09.md`
+   - 填写学习心得和时间统计
+
+### 今日任务 (Day 2)
+- [x] 创建Day 2学习资料
+- [ ] 运行Day 2的3个练习脚本
+- [ ] 理解自动微分机制
+- [ ] 实现梯度下降算法
 - [ ] 更新学习日志
 - [ ] Git提交今日进度
 
 ## 📊 统计信息
 
 ### 代码统计
-- Python文件: 4个
-- Markdown文档: 6个
-- Shell脚本: 1个
-- 总代码行数: ~400行
+- Python文件: 10个 (Day 1: 4个, Day 2: 6个)
+- Markdown文档: 9个
+- Shell脚本: 2个
+- 总代码行数: ~1000行
 
 ### Git提交
-- 总提交数: 2
-- 最近提交: "Add quickstart guide, environment checker, and setup instructions"
+- 总提交数: 4+
+- 最近提交: "Day 2: 自动微分与梯度计算"
 
 ### 学习统计
-- 学习天数: 1/90
+- 学习天数: 2/90 (2.2%)
 - 完成周数: 0/12
 - 完成项目: 0/12
+- 本周进度: 2/7天
 
 ## 🎓 学习路线回顾
 
@@ -142,8 +150,9 @@
 ## 🔄 更新记录
 
 - 2026-05-08: 项目创建，完成Day 1准备工作
+- 2026-05-09: Day 1完成，创建Day 2学习资料（自动微分）
 
 ---
 
-**最后更新:** 2026-05-08 20:43  
-**下次更新:** Day 2 学习后
+**最后更新:** 2026-05-09  
+**下次更新:** Day 3 学习后
