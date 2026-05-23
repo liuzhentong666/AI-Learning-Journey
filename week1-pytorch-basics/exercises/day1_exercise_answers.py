@@ -55,7 +55,7 @@ def exercise2_tensor_operations():
     print("\nreshape后的结果:\n", reshaped_x)
     
     # 3. 计算每列的平均值
-    col_means = reshaped_x.mean(dim=0)
+    col_means = reshaped_x.float().mean(dim=0)
     print("\n每列平均值:\n", col_means)
     
     return first_page, reshaped_x, col_means
@@ -129,16 +129,16 @@ def main():
     print("\n" + "=" * 50)
     print("Day 1 PyTorch张量练习 - 答案")
     print("=" * 50)
-    
+
     print("\n【练习1】张量创建")
     exercise1_tensor_creation()
-    
+
     print("\n【练习2】张量操作")
     exercise2_tensor_operations()
-    
+
     print("\n【练习3】张量标准化")
     exercise3_tensor_standardization()
-    
+
     print("\n【附加练习】张量可视化")
     bonus_exercise()
 

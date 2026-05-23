@@ -52,6 +52,7 @@ print(f"∂f/∂y = {y.grad} (理论值: 2y = 8)")
 # 6. 向量函数
 print("\n6. 向量函数")
 x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+print(x.shape)
 y = x * 2  # y = 2x
 print(f"x = {x}")
 print(f"y = 2x = {y}")

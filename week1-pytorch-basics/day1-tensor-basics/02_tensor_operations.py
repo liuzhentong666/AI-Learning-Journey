@@ -35,9 +35,11 @@ print(f"view(2,6):\n{viewed}")
 # unsqueeze - 增加维度
 unsqueezed = x.unsqueeze(0)  # 在第0维增加
 print(f"unsqueeze(0)形状: {unsqueezed.shape}")
+print(unsqueezed)
 
 # squeeze - 删除大小为1的维度
 squeezed = unsqueezed.squeeze()
+print(squeezed)
 print(f"squeeze后形状: {squeezed.shape}")
 
 # 3. 张量的拼接
