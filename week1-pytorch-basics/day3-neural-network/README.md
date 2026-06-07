@@ -362,3 +362,370 @@ optimizer.step()
 
 **上一步：** Day 2 - 自动微分（autograd）  
 **下一步：** Day 4 - 训练循环与 DataLoader
+
+---
+
+# Day 3: Neural Network Basics (English)
+
+## Learning Objectives
+
+- Understand what a neural network is and how it works
+- Master PyTorch's `nn.Module` class and learn to define your own models
+- Get familiar with common layers: `Linear` (fully connected), `Conv2d` (convolution), `ReLU` (activation)
+- Understand the roles of loss functions and optimizers
+- Combine "model + loss + optimizer" to complete a simple training run
+
+---
+
+## Part 1: What Exactly Is a Neural Network? (From Scratch)
+
+### 1.1 Everyday Analogy
+
+Imagine teaching a child to recognize cats and dogs:
+
+1. Show them many cat photos and say "this is a cat"
+2. Show them many dog photos and say "this is a dog"
+3. After seeing enough, the child summarizes patterns: cats have pointier ears, dogs have longer noses...
+4. When shown a new photo, the child guesses whether it's a cat or a dog
+
+**A neural network does exactly this: "see examples → summarize patterns → predict new data"**, except it uses math instead of a brain.
+
+### 1.2 Basic Structure of a Neural Network
+
+The simplest neural network looks like this:
+
+```
+Input Layer      Hidden Layer       Output Layer
+  x1  ──→   [neuron]  ──→   [neuron]  ──→   y (prediction)
+  x2  ──→   [neuron]  ──→   [neuron]  ──→
+  x3  ──→   [neuron]  ──→   [neuron]  ──→
+```
+
+What each part means:
+
+| Name | What it is | Example |
+|------|-----------|---------|
+| **Input Layer** | Raw data | Pixel values of an image, a student's height and weight |
+| **Hidden Layer** | Intermediate processing, extracts features | Detecting "edges", "textures" |
+| **Output Layer** | Final prediction | "90% probability it's a cat", "house price: $500K" |
+| **Neuron** | Performs a weighted sum + activation | Formula: `y = f(w1*x1 + w2*x2 + b)` |
+| **Weight w** | Importance of each input | Parameters the model learns |
+| **Bias b** | Overall offset | Parameters the model learns |
+
+**Day 1** you learned tensors (data containers), **Day 2** you learned autograd (computing gradients).  
+**Day 3** combines data and gradients to build a model that can "learn".
+
+### 1.3 Forward Propagation: How Data Flows Through the Network
+
+"Forward propagation" = data passes layer by layer from input to output, producing a prediction.
+
+Example with a single neuron:
+
+```
+Input: x = [1.0, 2.0, 3.0]
+Weights: w = [0.5, 0.3, 0.2]
+Bias: b = 0.1
+
+Step 1: Weighted sum  z = w1*x1 + w2*x2 + w3*x3 + b
+              z = 0.5*1 + 0.3*2 + 0.2*3 + 0.1 = 1.4
+
+Step 2: Activation  a = ReLU(z) = max(0, 1.4) = 1.4
+
+Output: a = 1.4
+```
+
+A multi-layer network simply repeats this process: the output of one layer becomes the input of the next.
+
+### 1.4 Why Do We Need Activation Functions? (ReLU)
+
+If each layer only does "weighted sum" without an activation function, then no matter how many layers you stack, it's equivalent to a single linear function — it cannot learn complex patterns.
+
+**Activation functions** introduce "non-linearity", enabling the network to fit curves, recognize images, and handle complex tasks.
+
+The most commonly used activation is **ReLU**:
+
+```
+ReLU(x) = max(0, x)
+
+x = -2  →  ReLU = 0
+x =  0  →  ReLU = 0
+x =  3  →  ReLU = 3
+```
+
+Intuitive meaning: negatives become zero, positives stay. Simple, efficient, the default choice in deep learning.
+
+### 1.5 Backpropagation and Training (Connection to Day 2)
+
+Training consists of four steps, repeated in a loop:
+
+```
+┌─────────────────────────────────────────────────────┐
+│  1. Forward: input data → model → get prediction y_pred │
+│  2. Compute loss: compare y_pred with true labels y    │
+│  3. Backward: loss.backward(), compute gradients       │
+│  4. Update: optimizer.step(), reduce the loss           │
+└─────────────────────────────────────────────────────┘
+         ↑                                              │
+         └────────── Repeat for many epochs ────────────┘
+```
+
+- **Loss Function**: Measures "how bad the prediction is"; smaller is better
+- **Optimizer**: Automatically updates weights and biases based on gradients
+
+Day 2 you manually wrote `w -= learning_rate * w.grad`. Day 3 uses PyTorch's built-in optimizers instead of manual updates.
+
+---
+
+## Part 2: Neural Networks in PyTorch (Tech Stack Overview)
+
+Today's code uses the following tech stack:
+
+| Technology | Package/Module | Purpose |
+|-----------|---------|---------|
+| PyTorch Core | `torch` | Tensor operations |
+| Neural Network Module | `torch.nn` | Layers, loss functions, model base class |
+| Functional API | `torch.nn.functional` | Parameter-free operations like activations |
+| Optimizer | `torch.optim` | SGD, Adam and other optimization algorithms |
+
+### 2.1 nn.Module: The Parent Class of All Models
+
+In PyTorch, **every neural network inherits from `nn.Module`**. You need to implement two methods:
+
+```python
+import torch.nn as nn
+
+class MyModel(nn.Module):
+    def __init__(self):
+        super().__init__()          # Must call to initialize parent
+        self.layer1 = nn.Linear(3, 4)  # Define layers in __init__
+
+    def forward(self, x):
+        return self.layer1(x)       # Define data flow in forward
+```
+
+- `__init__`: Define what layers exist (executed once)
+- `forward`: Define how data flows through those layers (executed for every prediction)
+
+### 2.2 Common Layers Quick Reference
+
+#### nn.Linear (Fully Connected Layer)
+
+Connects every input to every output. Suitable for tabular data and vector inputs.
+
+```python
+layer = nn.Linear(in_features=784, out_features=128)
+# Input: 784 numbers → Output: 128 numbers
+# Internal parameters: weight W(128×784) + bias b(128)
+```
+
+#### nn.Conv2d (2D Convolution Layer)
+
+Specialized for images. Extracts local features (edges, textures) by "sliding a small window".
+
+```python
+conv = nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3)
+# Input: 3-channel color image (R/G/B)
+# Output: 16 feature maps
+# kernel_size=3: scan with a 3×3 window
+```
+
+#### nn.ReLU (Activation Function)
+
+```python
+relu = nn.ReLU()   # Use as a layer
+# or
+F.relu(x)          # Use as a function (torch.nn.functional)
+```
+
+### 2.3 Loss Functions
+
+| Loss Function | Use Case | PyTorch Syntax |
+|--------------|----------|----------------|
+| MSE (Mean Squared Error) | Regression (predicting continuous values, e.g., house prices) | `nn.MSELoss()` |
+| CrossEntropy | Multi-class classification (predicting categories, e.g., cat/dog/bird) | `nn.CrossEntropyLoss()` |
+
+### 2.4 Optimizers
+
+| Optimizer | Characteristics | PyTorch Syntax |
+|-----------|----------------|----------------|
+| SGD | Most basic, you hand-coded this on Day 2 | `optim.SGD(params, lr=0.01)` |
+| Adam | Adaptive learning rate, common default choice | `optim.Adam(params, lr=0.001)` |
+
+---
+
+## Practice Files
+
+### 01_nn_module_basics.py
+
+Learn basic `nn.Module` usage:
+- Why inherit `nn.Module`
+- Division of labor between `__init__` and `forward`
+- Inspecting model structure and parameters
+- Difference between `train()` and `eval()` modes
+
+**Run:**
+```bash
+cd day3-neural-network
+python 01_nn_module_basics.py
+```
+
+### 02_common_layers.py
+
+Learn common neural network layers:
+- `nn.Linear` fully connected layer
+- `nn.Conv2d` convolution layer (for images)
+- `nn.ReLU` and other activation functions
+- Quick layer stacking with `nn.Sequential`
+- Building simple MLP and CNN
+
+**Run:**
+```bash
+python 02_common_layers.py
+```
+
+### 03_loss_and_optimizer.py
+
+Learn loss functions and optimizers, complete a full training run:
+- `nn.MSELoss` for regression tasks
+- `nn.CrossEntropyLoss` for classification tasks
+- `optim.SGD` and `optim.Adam`
+- Standard four-step training loop
+
+**Run:**
+```bash
+python 03_loss_and_optimizer.py
+```
+
+---
+
+## Part 3: Complete Training Pipeline (Day 3's Most Important Diagram)
+
+```
+  Data x, Labels y
+       │
+       ▼
+  ┌─────────┐
+  │  model  │  ← nn.Module, the neural network you defined
+  │ forward │
+  └────┬────┘
+       │ y_pred (predicted values)
+       ▼
+  ┌─────────┐
+  │  loss   │  ← nn.MSELoss / nn.CrossEntropyLoss
+  │  fn     │
+  └────┬────┘
+       │ loss (scalar, smaller is better)
+       ▼
+  loss.backward()     ← Autograd (Day 2), computes gradients
+       │
+       ▼
+  optimizer.step()    ← Update all model parameters
+  optimizer.zero_grad() ← Clear gradients, prepare for next round
+```
+
+Standard training code template (Day 4 will expand on this):
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+model = MyModel()
+criterion = nn.MSELoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+for epoch in range(100):
+  optimizer.zero_grad()       # 1. Clear gradients
+  y_pred = model(x)           # 2. Forward pass
+  loss = criterion(y_pred, y) # 3. Compute loss
+  loss.backward()             # 4. Backward pass
+  optimizer.step()            # 5. Update parameters
+```
+
+---
+
+## Practice Tasks
+
+1. **Basic Practice**
+   - Define a 3-layer MLP: `784 → 128 → 64 → 10`
+   - Print model structure and total parameter count
+
+2. **Applied Practice**
+   - Build a simple CNN using `nn.Sequential`
+   - Input shape `(1, 1, 28, 28)` (1 grayscale image of 28×28)
+   - Output 10-class logits
+
+3. **Challenge Practice**
+   - Generate fake data, train linear regression with MSE + Adam (compare to Day 2 hand-written gradient descent)
+   - Observe whether the loss decreases
+
+**Answer Reference:** See `exercises/day3_exercise_answers.py` (to be added later)
+
+---
+
+## Common Mistakes
+
+### 1. Forgetting to call super().__init__()
+
+```python
+# ❌ Wrong
+class MyModel(nn.Module):
+    def __init__(self):
+        self.layer = nn.Linear(10, 5)  # Error!
+
+# ✅ Correct
+class MyModel(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer = nn.Linear(10, 5)
+```
+
+### 2. Wrong Input Format for CrossEntropyLoss
+
+```python
+# ❌ Wrong: CrossEntropyLoss does not need manual softmax
+loss = criterion(F.softmax(output), target)
+
+# ✅ Correct: pass raw logits directly; CrossEntropyLoss includes softmax internally
+loss = criterion(output, target)
+```
+
+### 3. Forgetting optimizer.zero_grad()
+
+```python
+# ❌ Wrong: gradients accumulate, training becomes unstable
+loss.backward()
+optimizer.step()
+
+# ✅ Correct
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+```
+
+---
+
+## Learning Resources
+
+- [PyTorch nn.Module Documentation](https://pytorch.org/docs/stable/generated/torch.nn.Module.html)
+- [PyTorch Neural Network Tutorial](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)
+- [Common Layers Documentation](https://pytorch.org/docs/stable/nn.html)
+
+---
+
+## Checkpoints
+
+After completing today's study, you should be able to:
+
+- [ ] Explain in your own words: input layer, hidden layer, output layer, weights, bias
+- [ ] Explain why activation functions (ReLU) are needed
+- [ ] Inherit `nn.Module` and define `__init__` and `forward`
+- [ ] Use `nn.Linear`, `nn.Conv2d`, `nn.ReLU`
+- [ ] Choose the appropriate loss function (MSE / CrossEntropy)
+- [ ] Use `optim.SGD` or `optim.Adam` to update parameters
+- [ ] Write the standard four-step training loop
+
+---
+
+**Previous:** Day 2 - Autograd  
+**Next:** Day 4 - Training Loop & DataLoader

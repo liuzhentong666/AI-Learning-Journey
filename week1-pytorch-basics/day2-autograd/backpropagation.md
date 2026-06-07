@@ -74,4 +74,80 @@ dz/dx = df/dg * dg/dx
 - 深度学习教材：《深度学习》(Goodfellow)
 - 反向传播详细解析论文：Understanding Backpropagation Algorithm
 
-[其余内容保持不变...]
+---
+
+# Day 2: Autograd and Gradient Computation (English)
+
+## Learning Objectives
+- Understand the autograd mechanism
+- Master gradient computation and usage
+- Understand computational graph construction and release
+- Implement basic gradient descent algorithms
+
+## Why Do We Need Backpropagation?
+
+### 1. The Core Problem of Machine Learning: Optimization
+In machine learning, our fundamental goal is to minimize the loss function by continuously adjusting model parameters. Backpropagation provides an efficient method to compute the gradient of the loss function with respect to each parameter.
+
+### 2. Limitations of Traditional Gradient Computation
+- Manual gradient calculation:
+  - For complex neural networks, manual differentiation is nearly impossible
+  - Error-prone, especially in multi-layer networks
+  - Extremely inefficient computationally
+
+### 3. Advantages of Backpropagation
+- **Automated gradient computation**: Autograd technology precisely calculates gradients for each parameter
+- **High computational efficiency**: Efficiently propagates gradient information via the chain rule
+- **Strong scalability**: Applicable to various complex neural network architectures
+- **Reduced manual intervention**: Developers can focus on model design rather than tedious gradient calculations
+
+### 4. How Backpropagation Works
+```
+Input Layer → Hidden Layer → Output Layer
+     ↑              ↑
+Gradient Return  Loss Calculation
+```
+
+- Forward propagation: Compute predicted values
+- Backward propagation: Compute gradients based on the loss function
+- Parameter update: Adjust weights using gradient descent
+
+### 5. Practical Example: Linear Regression
+```python
+# Forward propagation
+y_pred = weights * x + bias
+
+# Compute loss
+loss = (y_pred - y_true)²
+
+# Backward propagation
+loss.backward()  # Automatically compute gradients
+
+# Update parameters
+weights -= learning_rate * weights.grad
+bias -= learning_rate * bias.grad
+```
+
+### 6. The Mathematical Essence of Backpropagation: The Chain Rule
+For a composite function z = f(g(x)), its derivative follows the chain rule:
+dz/dx = df/dg * dg/dx
+
+## Practical Significance
+Backpropagation makes deep learning possible:
+- Train complex neural networks
+- Automatically learn feature representations
+- Achieve smooth transitions from simple linear models to deep neural networks
+
+## Important Notes
+- Gradients may suffer from vanishing or exploding problems
+- The choice of learning rate is crucial
+- Different optimization algorithms affect convergence speed
+
+## Practice Suggestions
+1. Try to manually derive gradients of simple functions
+2. Observe the effect of different learning rates on model convergence
+3. Use PyTorch to implement a simple neural network and observe backpropagation
+
+## Recommended Resources
+- Deep Learning textbook: "Deep Learning" (Goodfellow)
+- Backpropagation detailed analysis paper: Understanding Backpropagation Algorithm

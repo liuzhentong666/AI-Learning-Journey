@@ -1,56 +1,66 @@
-# 快速开始指南
+# AI 大模型学习之路 - 快速开始
 
-欢迎来到AI大模型开发学习之旅！
+## 第一步：环境准备
 
-## 第一步：检查Python环境
-
+### 1. 安装Python（如未安装）
 ```bash
-# 检查Python版本（需要3.8+）
-python --version
+# Ubuntu/Debian
+sudo apt update
+sudo apt install python3 python3-pip
 
-# 或
-python3 --version
+# macOS
+brew install python3
+
+# Windows
+# 从 https://python.org 下载安装包
 ```
 
-## 第二步：安装依赖
-
+### 2. 克隆项目
 ```bash
-cd /mnt/f/AI-Learning-Journey
+git clone https://github.com/YOUR_USERNAME/AI-Learning-Journey.git
+cd AI-Learning-Journey
+```
 
-# 创建虚拟环境（推荐）
-python -m venv venv
-
-# 激活虚拟环境
-# Linux/Mac:
-source venv/bin/activate
-# Windows:
-# venv\Scripts\activate
-
-# 安装PyTorch和其他依赖
-pip install torch torchvision torchaudio
-pip install numpy matplotlib jupyter
-
-# 或一次性安装所有
+### 3. 安装依赖
+```bash
 pip install -r requirements.txt
 ```
 
-## 第三步：验证安装
+## 第二步：验证环境
 
 ```bash
-python -c "import torch; print('PyTorch版本:', torch.__version__); print('CUDA可用:', torch.cuda.is_available())"
+cd AI-Learning-Journey
+python check_environment.py
 ```
 
-## 第四步：运行Day 1练习
+确认输出显示：
+- Python >= 3.8
+- PyTorch 已安装
+- 环境正常
+
+## 第三步：开始学习
 
 ```bash
-# 方法1: 运行脚本
-./run_day1.sh
-
-# 方法2: 手动运行每个文件
+# Day 1：张量基础
 cd week1-pytorch-basics/day1-tensor-basics
 python 01_tensor_creation.py
-python 02_tensor_operations.py
-python 03_gpu_basics.py
+
+# Day 2：自动微分
+cd ../day2-autograd
+python 01_basic_autograd.py
+
+# Day 3：神经网络基础
+cd ../day3-neural-network
+python 01_nn_module_basics.py
+```
+
+## 第四步：记录学习
+
+在 `daily-logs/` 目录下创建学习日志：
+
+```bash
+# 创建当天的日志（以日期命名）
+touch daily-logs/YYYY-MM-DD.md
 ```
 
 ## 第五步：设置GitHub（见 setup_github.md）
@@ -58,7 +68,7 @@ python 03_gpu_basics.py
 1. 在GitHub网页创建仓库 `AI-Learning-Journey`
 2. 连接本地仓库：
 ```bash
-cd /mnt/f/AI-Learning-Journey
+cd AI-Learning-Journey
 git remote add origin https://github.com/YOUR_USERNAME/AI-Learning-Journey.git
 git branch -M main
 git push -u origin main
@@ -141,3 +151,159 @@ A: 在resources/目录下可以添加额外的学习资料和笔记。
 ---
 
 **祝学习顺利！记住：从零到一最难，坚持就是胜利！** 🚀
+
+---
+
+# AI LLM Learning Journey - Quick Start (English)
+
+## Step 1: Environment Setup
+
+### 1. Install Python (if not installed)
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install python3 python3-pip
+
+# macOS
+brew install python3
+
+# Windows
+# Download from https://python.org
+```
+
+### 2. Clone the Project
+```bash
+git clone https://github.com/YOUR_USERNAME/AI-Learning-Journey.git
+cd AI-Learning-Journey
+```
+
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+## Step 2: Verify Environment
+
+```bash
+cd AI-Learning-Journey
+python check_environment.py
+```
+
+Confirm output shows:
+- Python >= 3.8
+- PyTorch installed
+- Environment OK
+
+## Step 3: Start Learning
+
+```bash
+# Day 1: Tensor Basics
+cd week1-pytorch-basics/day1-tensor-basics
+python 01_tensor_creation.py
+
+# Day 2: Autograd
+cd ../day2-autograd
+python 01_basic_autograd.py
+
+# Day 3: Neural Network Basics
+cd ../day3-neural-network
+python 01_nn_module_basics.py
+```
+
+## Step 4: Log Your Learning
+
+Create daily logs in the `daily-logs/` directory:
+
+```bash
+# Create today's log (named by date)
+touch daily-logs/YYYY-MM-DD.md
+```
+
+## Step 5: Set Up GitHub (see setup_github.md)
+
+1. Create the `AI-Learning-Journey` repository on GitHub
+2. Connect your local repository:
+```bash
+cd AI-Learning-Journey
+git remote add origin https://github.com/YOUR_USERNAME/AI-Learning-Journey.git
+git branch -M main
+git push -u origin main
+```
+
+## Project Structure
+
+```
+AI-Learning-Journey/
+├── README.md                    # Project overview
+├── QUICKSTART.md               # This file
+├── setup_github.md             # GitHub setup guide
+├── requirements.txt            # Python dependencies
+├── daily-logs/                 # Daily learning logs
+│   └── 2026-05-08.md
+├── week1-pytorch-basics/       # Week 1 learning content
+│   ├── README.md
+│   └── day1-tensor-basics/     # Day 1 exercises
+│       ├── 01_tensor_creation.py
+│       ├── 02_tensor_operations.py
+│       ├── 03_gpu_basics.py
+│       └── README.md
+└── ... (more weeks)
+```
+
+## Learning Workflow
+
+### Daily Workflow
+1. Read the day's README.md to understand learning objectives
+2. Run example code to grasp concepts
+3. Complete practice exercises
+4. Update your learning log
+5. Commit to GitHub
+
+### Weekly Workflow
+1. Monday-Friday: Theory study + coding practice
+2. Weekend: Project practice
+3. Sunday evening: Review and prepare for next week
+
+## FAQ
+
+**Q: I don't have a GPU, what should I do?**  
+A: No problem! All exercises can run on CPU, though training will be slightly slower.
+
+**Q: PyTorch installation failed?**  
+A: Visit https://pytorch.org/get-started/locally/ and select the appropriate install command for your system.
+
+**Q: Code throws errors when running?**  
+A: 
+1. Check that Python version >= 3.8
+2. Verify PyTorch is correctly installed
+3. Read the error message — it usually hints at missing packages
+4. Record issues and solutions in your daily-logs
+
+**Q: Falling behind on the learning schedule?**  
+A: No worries, go at your own pace. Understanding concepts matters more than keeping up with a timeline.
+
+**Q: Want to dive deeper into a topic?**  
+A: You can add extra learning materials and notes in the resources/ directory.
+
+## Study Tips
+
+1. **Stay Consistent** — 1–2 hours daily works better than 6-hour weekend marathons
+2. **Hands-On Practice** — Don't just read code; type it out yourself
+3. **Take Notes** — Record insights and challenges in daily-logs
+4. **Experiment** — Tweak code parameters, observe results, deepen understanding
+5. **Review Regularly** — Revisit each week's content on weekends to reinforce memory
+
+## Getting Help
+
+- PyTorch Official Forum: https://discuss.pytorch.org/
+- Stack Overflow: Search error messages
+- GitHub Issues: Ask questions on relevant projects
+- Study Notes: Record in daily-logs for easy review
+
+## Next Steps
+
+Read `week1-pytorch-basics/README.md` to start your Week 1 learning!
+
+---
+
+**Happy learning! Remember: The hardest step is the first one — persistence leads to success!** 🚀

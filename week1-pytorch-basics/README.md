@@ -120,3 +120,128 @@ pip install numpy matplotlib jupyter
 
 **开始日期:** 2026-05-08  
 **预计完成:** 2026-05-14
+
+---
+
+# Week 1: PyTorch Basics & Deep Learning Introduction
+
+## 🎯 Weekly Goals
+
+Master PyTorch basic operations, understand the deep learning training process, and complete an MNIST handwritten digit recognition project.
+
+## 📚 Learning Content
+
+### Day 1: Environment Setup + PyTorch Basics
+- PyTorch installation (CPU/GPU version)
+- Tensor basic operations
+- Conversion with NumPy
+
+### Day 2: Tensor Operations and Automatic Differentiation
+- Tensor creation, indexing, slicing
+- Broadcasting mechanism
+- Automatic differentiation (autograd)
+- Gradient computation
+
+### Day 3: Neural Network Basics
+- nn.Module class
+- Common layers: Linear, Conv2d, ReLU
+- Loss functions
+- Optimizers
+
+### Day 4: Training Loop
+- Forward propagation
+- Loss calculation
+- Backward propagation
+- Parameter update
+- DataLoader
+
+### Day 5-6: MNIST Project Practice
+- Dataset loading
+- Model design (CNN)
+- Training and validation
+- Model saving and loading
+- Result visualization
+
+### Day 7: Weekly Summary and Review
+- Organize learning notes
+- Code refactoring
+- Prepare for next week's content
+
+## 📁 Project Structure
+
+```
+week1-pytorch-basics/
+├── day1-tensor-basics/        # Tensor basics
+├── day2-autograd/             # Automatic differentiation
+├── day3-neural-network/       # Neural networks
+├── day4-training-loop/        # Training loop
+├── day5-6-mnist-project/      # MNIST project
+│   ├── data/                  # Dataset
+│   ├── models/                # Model definitions
+│   ├── train.py               # Training script
+│   ├── test.py                # Testing script
+│   └── visualize.py           # Visualization
+├── exercises/                 # Exercises
+└── README.md
+```
+
+## 🔧 Environment Requirements
+
+```bash
+# Python 3.8+
+python --version
+
+# Install PyTorch (CPU version)
+pip install torch torchvision torchaudio
+
+# Install other dependencies
+pip install numpy matplotlib jupyter
+```
+
+## 📊 Learning Checkpoints
+
+- [ ] Can create and manipulate tensors
+- [ ] Understand automatic differentiation mechanism
+- [ ] Can build neural networks with nn.Module
+- [ ] Can write a complete training loop
+- [ ] Complete MNIST project (accuracy > 95%)
+
+## 📚 Learning Resources
+
+1. **Official Tutorials**
+   - [PyTorch 60-Minute Blitz](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
+   - [PyTorch Official Documentation](https://pytorch.org/docs/stable/index.html)
+
+2. **Video Courses**
+   - [Dive into Deep Learning - PyTorch Edition](https://d2l.ai/)
+   - [Stanford CS231n](http://cs231n.stanford.edu/)
+
+3. **Recommended Reading**
+   - "Deep Learning from Scratch: Theory and Implementation with Python"
+
+## 💡 Study Tips
+
+1. **Learn by doing**: Write code to verify every concept as soon as you learn it
+2. **Comparative learning**: Compare with NumPy to understand PyTorch
+3. **Visualization**: Use matplotlib to plot training curves
+4. **Take notes**: Organize key knowledge and common errors
+5. **Ask questions**: Why do we need automatic differentiation? Why use SGD?
+
+## 🎓 Weekly Project: MNIST Handwritten Digit Recognition
+
+**Project Goals:**
+- Implement a CNN model to recognize handwritten digits
+- Achieve training accuracy above 95%
+- Visualize the training process and prediction results
+- Understand the complete deep learning workflow
+
+**Technical Points:**
+- Convolutional neural networks
+- Data augmentation
+- Model saving and loading
+- Training curve visualization
+
+---
+
+**Start Date:** 2026-05-08  
+**Expected Completion:** 2026-05-14

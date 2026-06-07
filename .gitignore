@@ -1,25 +1,12 @@
-# Python
+# Python bytecode cache
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-.venv
-pip-log.txt
-pip-delete-this-directory.txt
-.pytest_cache/
-.coverage
-htmlcov/
-*.egg-info/
-dist/
-build/
+*.pyc
+*.pyo
 
-# Jupyter
-.ipynb_checkpoints
-*.ipynb
+# Virtual environment
+venv/
+.venv/
+env/
 
 # IDE
 .vscode/
@@ -28,45 +15,6 @@ build/
 *.swo
 *~
 
-# Data
-*.csv
-*.json
-*.pkl
-*.h5
-*.pt
-*.pth
-*.onnx
-data/
-datasets/
-*.db
-*.sqlite
-
-# Models
-models/*.pth
-models/*.pt
-checkpoints/
-saved_models/
-
-# Logs
-logs/
-*.log
-wandb/
-runs/
-
 # OS
 .DS_Store
 Thumbs.db
-
-# Environment
-.env
-.env.local
-
-# Large files
-*.zip
-*.tar.gz
-*.rar
-
-# Temporary
-tmp/
-temp/
-cache/

@@ -33,10 +33,10 @@ Files: 8 files changed, 972 insertions(+), 48 deletions(-)
 如果你已经有GitHub Token：
 
 ```bash
-cd /mnt/f/AI-Learning-Journey
+cd AI-Learning-Journey
 
 # 设置远程URL（包含token）
-git remote set-url origin https://YOUR_TOKEN@github.com/liuzhentong666/AI-Learning-Journey.git
+git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/AI-Learning-Journey.git
 
 # 推送
 git push origin main
@@ -47,10 +47,10 @@ git push origin main
 如果你已经设置好SSH：
 
 ```bash
-cd /mnt/f/AI-Learning-Journey
+cd AI-Learning-Journey
 
 # 改为SSH地址
-git remote set-url origin git@github.com:liuzhentong666/AI-Learning-Journey.git
+git remote set-url origin git@github.com:YOUR_USERNAME/AI-Learning-Journey.git
 
 # 推送
 git push origin main
@@ -61,7 +61,7 @@ git push origin main
 如果GitHub CLI (gh) 已安装并认证：
 
 ```bash
-cd /mnt/f/AI-Learning-Journey
+cd AI-Learning-Journey
 
 # 使用gh认证
 gh auth login
@@ -76,7 +76,7 @@ git push origin main
 
 推送成功后，访问你的GitHub仓库：
 
-**仓库地址:** https://github.com/liuzhentong666/AI-Learning-Journey
+**仓库地址:** https://github.com/YOUR_USERNAME/AI-Learning-Journey
 
 你应该能看到：
 - ✅ 最新提交: "Day 2: 自动微分与梯度计算..."
@@ -107,7 +107,7 @@ git push origin main
 
 1. **运行Day 2练习**
    ```bash
-   cd /mnt/f/AI-Learning-Journey
+   cd AI-Learning-Journey
    ./run_day2.sh
    ```
 
@@ -125,3 +125,133 @@ git push origin main
 ---
 
 **需要帮助？** 参考 `setup_github.md` 了解详细的GitHub认证设置。
+
+---
+
+# Push Day 2 Updates to GitHub
+
+## ✅ Locally Committed
+
+Your Day 2 updates have been committed locally:
+
+```
+Commit: 9ac41ac
+Message: Day 2: Autograd & Gradient Computation - Created learning materials and practice code
+Files: 8 files changed, 972 insertions(+), 48 deletions(-)
+```
+
+**New Files:**
+- daily-logs/2026-05-09.md
+- run_day2.sh
+- week1-pytorch-basics/day2-autograd/01_basic_autograd.py
+- week1-pytorch-basics/day2-autograd/02_computational_graph.py
+- week1-pytorch-basics/day2-autograd/03_gradient_descent.py
+- week1-pytorch-basics/day2-autograd/README.md
+
+**Updated Files:**
+- README.md (Updated progress to 2/90 days)
+- PROJECT_STATUS.md (Updated Day 2 status)
+
+---
+
+## 🚀 Push to GitHub
+
+Since GitHub authentication is required, please follow these steps:
+
+### Method 1: Using Personal Access Token (Recommended)
+
+If you already have a GitHub Token:
+
+```bash
+cd AI-Learning-Journey
+
+# Set remote URL (including token)
+git remote set-url origin https://YOUR_TOKEN@github.com/YOUR_USERNAME/AI-Learning-Journey.git
+
+# Push
+git push origin main
+```
+
+### Method 2: SSH Key (One-time Setup)
+
+If you have already set up SSH:
+
+```bash
+cd AI-Learning-Journey
+
+# Switch to SSH address
+git remote set-url origin git@github.com:YOUR_USERNAME/AI-Learning-Journey.git
+
+# Push
+git push origin main
+```
+
+### Method 3: Manual Credential Entry
+
+If GitHub CLI (gh) is installed and authenticated:
+
+```bash
+cd AI-Learning-Journey
+
+# Authenticate with gh
+gh auth login
+
+# Push
+git push origin main
+```
+
+---
+
+## 📋 Verify Push Success
+
+After a successful push, visit your GitHub repository:
+
+**Repository URL:** https://github.com/YOUR_USERNAME/AI-Learning-Journey
+
+You should see:
+- ✅ Latest commit: "Day 2: Autograd & Gradient Computation..."
+- ✅ 8 file changes
+- ✅ daily-logs/2026-05-09.md
+- ✅ week1-pytorch-basics/day2-autograd/ directory
+
+---
+
+## 🎯 Day 2 Completion Checklist
+
+Before pushing, confirm you have completed:
+
+- [x] Created Day 2 learning materials ✅
+- [x] Wrote 3 practice scripts ✅
+- [x] Created README and run scripts ✅
+- [x] Updated project progress documents ✅
+- [x] Git commit ✅
+- [ ] Run Day 2 practice code
+- [ ] Fill in learning log reflections
+- [ ] Push to GitHub
+
+---
+
+## 💡 Next Steps
+
+After successful push:
+
+1. **Run Day 2 Exercises**
+   ```bash
+   cd AI-Learning-Journey
+   ./run_day2.sh
+   ```
+
+2. **Complete Learning Log**
+   - Edit `daily-logs/2026-05-09.md`
+   - Fill in learning reflections and time statistics
+
+3. **Commit and Push Again**
+   ```bash
+   git add daily-logs/2026-05-09.md
+   git commit -m "Day 2 Study Complete: Updated learning log"
+   git push origin main
+   ```
+
+---
+
+**Need help?** Refer to `setup_github.md` for detailed GitHub authentication setup.

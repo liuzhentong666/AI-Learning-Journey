@@ -1,6 +1,6 @@
 # AI大模型开发学习之旅
 
-> 学习周期：3个月 (2026.05 - 2026.08)  
+> 学习周期：3个月  
 > 目标：掌握Python AI开发 + Go后端集成，完成可写入简历的开源项目
 
 ## 📚 学习路线
@@ -42,27 +42,28 @@ AI-Learning-Journey/
 
 ## 📝 每日学习记录
 
-### 2026年5月
+### Week 1 — PyTorch 基础
 
-- [2026-05-08](daily-logs/2026-05-08.md) - Day 1: 项目启动，PyTorch张量基础 ✅
-- [2026-05-09](daily-logs/2026-05-09.md) - Day 2: 自动微分与梯度计算 🔄
+- [Day 1](daily-logs/2026-05-08.md) — 项目启动，PyTorch 张量基础 ✅
+- [Day 2](daily-logs/2026-05-09.md) — 自动微分与梯度计算 ✅
+- [Day 3](daily-logs/2026-05-24.md) — 神经网络基础 (nn.Module, CNN, MLP, 损失函数, 优化器) ✅
 
 ## 🎯 本周目标（Week 1）
 
 **学习内容：**
-- [x] PyTorch安装与环境配置 ✅
+- [x] PyTorch 安装与环境配置 ✅
 - [x] 张量操作基础 ✅
 - [x] 自动微分机制 ✅
-- [ ] 构建简单神经网络
-- [ ] MNIST手写数字识别项目
+- [x] 构建简单神经网络 ✅
+- [ ] MNIST 手写数字识别项目
 
 **每日任务：**
-- Day 1: 环境搭建 + PyTorch基础 ✅
-- Day 2: 自动微分与梯度计算 🔄 ← 当前
-- Day 3: 神经网络基础
+- Day 1: 环境搭建 + PyTorch 基础 ✅
+- Day 2: 自动微分与梯度计算 ✅
+- Day 3: 神经网络基础 ✅ ← 当前
 - Day 4: 训练循环与优化器
-- Day 5: MNIST项目实战（上）
-- Day 6: MNIST项目实战（下）
+- Day 5: MNIST 项目实战（上）
+- Day 6: MNIST 项目实战（下）
 - Day 7: 周总结与复习
 
 ## 📚 学习资源
@@ -85,15 +86,15 @@ AI-Learning-Journey/
 - FastAPI / ChromaDB
 
 **Go后端:**
-- Go 1.20+ / Gin / GORM
+- Go / Gin / GORM
 - PostgreSQL / Redis
 
 ## 📊 学习统计
 
-- 学习天数: 2 / 90
+- 学习天数: 3 / 90
 - 完成项目: 0 / 12
-- 代码提交: 4+
-- 学习时长: ~5h
+- 代码提交: 6+
+- 学习时长: ~8h
 
 ## 🏆 里程碑
 
@@ -103,5 +104,116 @@ AI-Learning-Journey/
 
 ---
 
-**最后更新：** 2026-05-09  
-**当前进度：** Week 1 - Day 2
+**最后更新：** 2026-06-07  
+**当前进度：** Week 1 - Day 3
+
+---
+
+# AI Large Model Development Learning Journey
+
+> Learning Period: 3 Months  
+> Goal: Master Python AI Development + Go Backend Integration, complete a resume-worthy open-source project
+
+## 📚 Learning Path
+
+### Phase 1: Python AI Development Basics (Weeks 1-4)
+- ✅ Week 1: PyTorch Basics & Deep Learning Introduction
+- ⏳ Week 2: Transformer Architecture Understanding
+- ⏳ Week 3: LLM Inference & Fine-tuning
+- ⏳ Week 4: Vector Databases & RAG
+
+### Phase 2: Go Language & Backend Integration (Weeks 5-8)
+- ⏳ Week 5: Go Language Crash Course
+- ⏳ Week 6: Gin Framework & PostgreSQL
+- ⏳ Week 7: Go Calling LLMs
+- ⏳ Week 8: System Integration & Optimization
+
+### Phase 3: Complete Project Development (Weeks 9-12)
+- ⏳ Week 9-10: AI Document Assistant System Development
+- ⏳ Week 11: Project Optimization & Deployment
+- ⏳ Week 12: Documentation & Open Source Release
+
+## 📁 Project Structure
+
+```
+AI-Learning-Journey/
+├── week1-pytorch-basics/       # PyTorch Basics Exercises
+├── week2-transformer/          # Transformer Implementation
+├── week3-llm-finetuning/      # LLM Fine-tuning
+├── week4-rag/                  # RAG System
+├── week5-go-basics/            # Go Language Basics
+├── week6-gin-postgres/         # Gin+PostgreSQL
+├── week7-go-ai-integration/    # Go Calling AI
+├── week8-system-integration/   # System Integration
+├── week9-12-final-project/     # Final Project
+├── daily-logs/                 # Daily Learning Records
+├── resources/                  # Learning Resources
+└── README.md                   # Project Description
+```
+
+## 📝 Daily Learning Records
+
+### Week 1 — PyTorch Basics
+
+- [Day 1](daily-logs/2026-05-08.md) — Project Launch, PyTorch Tensor Basics ✅
+- [Day 2](daily-logs/2026-05-09.md) — Autograd & Gradient Computation ✅
+- [Day 3](daily-logs/2026-05-24.md) — Neural Network Basics (nn.Module, CNN, MLP, Loss Functions, Optimizers) ✅
+
+## 🎯 This Week's Goals (Week 1)
+
+**Learning Content:**
+- [x] PyTorch Installation & Environment Setup ✅
+- [x] Tensor Operations Basics ✅
+- [x] Autograd Mechanism ✅
+- [x] Build Simple Neural Network ✅
+- [ ] MNIST Handwritten Digit Recognition Project
+
+**Daily Tasks:**
+- Day 1: Environment Setup + PyTorch Basics ✅
+- Day 2: Autograd & Gradient Computation ✅
+- Day 3: Neural Network Basics ✅ ← Current
+- Day 4: Training Loop & Optimizers
+- Day 5: MNIST Project Practice (Part 1)
+- Day 6: MNIST Project Practice (Part 2)
+- Day 7: Weekly Summary & Review
+
+## 📚 Learning Resources
+
+### Python AI Development
+- [PyTorch Official Tutorials](https://pytorch.org/tutorials/)
+- [Dive into Deep Learning](https://d2l.ai/)
+- [Hugging Face Course](https://huggingface.co/course)
+- [nanoGPT Project](https://github.com/karpathy/nanoGPT)
+
+### Go Development
+- [Go Official Tour](https://go.dev/tour/)
+- [Gin Framework Docs](https://gin-gonic.com/docs/)
+- [GORM Docs](https://gorm.io/docs/)
+
+## 🔧 Tech Stack
+
+**Python AI:**
+- PyTorch / transformers / LangChain
+- FastAPI / ChromaDB
+
+**Go Backend:**
+- Go / Gin / GORM
+- PostgreSQL / Redis
+
+## 📊 Learning Statistics
+
+- Days Studied: 3 / 90
+- Projects Completed: 0 / 12
+- Code Commits: 6+
+- Study Duration: ~8h
+
+## 🏆 Milestones
+
+- [ ] Week 4: Complete PyTorch basics, able to train models independently
+- [ ] Week 8: Complete Go backend, able to call AI APIs
+- [ ] Week 12: Complete full project, publish to GitHub
+
+---
+
+**Last Updated:** 2026-06-07  
+**Current Progress:** Week 1 - Day 3

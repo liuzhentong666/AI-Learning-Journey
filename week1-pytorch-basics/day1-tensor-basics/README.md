@@ -152,3 +152,158 @@ x.cpu()                      # 移到CPU
 ---
 
 **下一步：** Day 2 - 自动微分机制（autograd）
+
+---
+
+# Day 1: PyTorch Tensor Basics
+
+## Learning Objectives
+- Understand the concept of tensors
+- Master tensor creation, operations, and reshaping
+- Understand the relationship between PyTorch and NumPy
+- Learn GPU acceleration basics
+
+## Exercise Files
+
+### 01_tensor_creation.py
+Learn various tensor creation methods:
+- Creating from lists/NumPy
+- Creating special tensors (zeros, ones, random, etc.)
+- Specifying data types
+- Creating sequence tensors
+
+**Run:**
+```bash
+python 01_tensor_creation.py
+```
+
+### 02_tensor_operations.py
+Learn various tensor operations:
+- Indexing and slicing
+- Shape transformations (reshape, view, squeeze, unsqueeze)
+- Tensor concatenation (cat, stack)
+- Mathematical operations
+- Broadcasting mechanism
+- Converting to/from NumPy
+
+**Run:**
+```bash
+python 02_tensor_operations.py
+```
+
+### 03_gpu_basics.py
+Understand GPU acceleration basics:
+- CUDA availability check
+- Device selection
+- Moving tensors between devices
+- CPU vs GPU performance comparison
+
+**Run:**
+```bash
+python 03_gpu_basics.py
+```
+
+## Core Concepts
+
+### 1. What is a Tensor?
+Tensors are the fundamental data structure in PyTorch, similar to NumPy's ndarray but capable of running on GPUs.
+
+```python
+# 0-D tensor (scalar)
+scalar = torch.tensor(3.14)
+
+# 1-D tensor (vector)
+vector = torch.tensor([1, 2, 3])
+
+# 2-D tensor (matrix)
+matrix = torch.tensor([[1, 2], [3, 4]])
+
+# 3-D tensor (cube)
+cube = torch.randn(2, 3, 4)
+```
+
+### 2. Tensor Attributes
+- `shape` / `size()`: shape
+- `dtype`: data type
+- `device`: device (CPU/GPU)
+- `requires_grad`: whether gradient is needed (covered next lesson)
+
+### 3. PyTorch vs NumPy
+
+| Feature | PyTorch | NumPy |
+|---------|---------|-------|
+| Basic Unit | Tensor | ndarray |
+| GPU Support | ✅ | ❌ |
+| Automatic Differentiation | ✅ | ❌ |
+| Deep Learning | ✅ | ❌ |
+| Scientific Computing | ✅ | ✅ |
+
+### 4. Common Operations Quick Reference
+
+```python
+# Creation
+torch.tensor(data)           # Create from data
+torch.zeros(shape)           # All zeros
+torch.ones(shape)            # All ones
+torch.rand(shape)            # [0,1) random
+torch.randn(shape)           # Standard normal distribution
+
+# Shape
+x.shape / x.size()           # View shape
+x.reshape(shape)             # Change shape
+x.view(shape)                # View (shared memory)
+x.unsqueeze(dim)             # Add dimension
+x.squeeze(dim)               # Remove dimension
+
+# Concatenation
+torch.cat([a, b], dim)       # Concatenate
+torch.stack([a, b], dim)     # Stack
+
+# Operations
+x + y, x - y, x * y, x / y   # Element-wise
+torch.matmul(a, b) / a @ b   # Matrix multiplication
+x.sum(), x.mean(), x.max()   # Aggregation
+
+# Device
+x.to(device)                 # Move to device
+x.cuda()                     # Move to GPU
+x.cpu()                      # Move to CPU
+```
+
+## Practice Tasks
+
+Complete the following exercises to reinforce your knowledge:
+
+1. **Tensor Creation Practice**
+   - Create a 5×5 identity matrix
+   - Create a 3×4 random matrix with values in [-1, 1]
+   - Create a sequence tensor from 0 to 100 with step size 5
+
+2. **Tensor Operation Practice**
+   - Given tensor `x = torch.arange(24).reshape(2, 3, 4)`
+   - Extract all data from the first "page"
+   - Reshape it to (6, 4)
+   - Calculate the mean of each column
+
+3. **Practical Exercise**
+   - Implement a function that takes a tensor of any shape and returns a normalized tensor
+   - Normalization formula: `(x - mean) / std`
+
+**Reference answers:** See `exercises/day1_answers.py`
+
+## Learning Resources
+
+- [PyTorch Tensor Documentation](https://pytorch.org/docs/stable/tensors.html)
+- [PyTorch Tutorial - Tensors](https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html)
+- [From NumPy to PyTorch](https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html)
+
+## Checklist
+
+After completing today's study, you should be able to:
+- [ ] Create various types of tensors
+- [ ] Index, slice, and reshape tensors
+- [ ] Understand the broadcasting mechanism
+- [ ] Move tensors between CPU and GPU
+- [ ] Know when to use PyTorch instead of NumPy
+
+**Next Step:** Day 2 - Automatic Differentiation (autograd)

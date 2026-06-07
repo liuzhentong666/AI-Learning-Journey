@@ -268,3 +268,274 @@ x = torch.tensor([1.0], requires_grad=True)
 ---
 
 **下一步：** Day 3 - 神经网络基础（nn.Module）
+
+---
+
+# Day 2: Automatic Differentiation and Gradient Computation
+
+## Learning Objectives
+- Understand the automatic differentiation (autograd) mechanism
+- Master gradient computation and usage
+- Understand computational graph construction and release
+- Implement basic gradient descent algorithms
+
+## Exercise Files
+
+### 01_basic_autograd.py
+Autograd fundamentals:
+- requires_grad parameter
+- backward() method
+- Gradient accumulation and zeroing
+- Preventing gradient tracking
+- Gradient computation for simple functions
+
+**Run:**
+```bash
+python 01_basic_autograd.py
+```
+
+### 02_computational_graph.py
+Computational graphs and gradient flow:
+- Construction of computational graphs
+- Chain rule
+- Branching computational graphs
+- Higher-order derivatives
+- Gradient flow in neural networks
+
+**Run:**
+```bash
+python 02_computational_graph.py
+```
+
+### 03_gradient_descent.py
+Gradient descent in practice:
+- Function optimization
+- Linear regression
+- Multiple linear regression
+- Momentum gradient descent
+- Mini-batch gradient descent
+
+**Run:**
+```bash
+python 03_gradient_descent.py
+```
+
+## Core Concepts
+
+### 1. What is Automatic Differentiation?
+
+Automatic Differentiation is a technique for computing derivatives. PyTorch uses **reverse-mode automatic differentiation** (also called backpropagation).
+
+```python
+x = torch.tensor([2.0], requires_grad=True)
+y = x ** 2  # y = 4
+
+y.backward()  # Compute dy/dx
+print(x.grad)  # Output: tensor([4.]) because dy/dx = 2x = 4
+```
+
+### 2. Why Do We Need Automatic Differentiation?
+
+The core of deep learning is **gradient descent**:
+- We need to compute the gradient of the loss function with respect to each parameter
+- Manual gradient computation is error-prone and inefficient
+- Automatic differentiation lets us focus on designing network architectures
+
+### 3. Computational Graph
+
+PyTorch builds a **dynamic computational graph** during forward propagation:
+
+```
+Input x ---[Op 1]---> Intermediate a ---[Op 2]---> Output y
+                                                       |
+                              Backpropagation <---------
+                            (gradient computation)
+```
+
+### 4. Key API
+
+```python
+# Create a tensor that requires gradients
+x = torch.tensor([1.0], requires_grad=True)
+
+# Compute gradient
+y = f(x)
+y.backward()
+
+# Access gradient
+print(x.grad)
+
+# Zero the gradient
+x.grad.zero_()
+
+# Prevent gradient tracking
+with torch.no_grad():
+    y = f(x)  # y will not track gradients
+
+# Or use detach
+y = f(x).detach()
+```
+
+### 5. Gradient Descent
+
+```python
+# Standard gradient descent
+for epoch in range(epochs):
+    # Forward pass
+    y_pred = model(x)
+    loss = loss_fn(y_pred, y_true)
+
+    # Backward pass
+    loss.backward()
+
+    # Update parameters
+    with torch.no_grad():
+        param -= learning_rate * param.grad
+
+    # Zero gradients (important!)
+    param.grad.zero_()
+```
+
+## Common Concepts
+
+### Leaf Node
+- User-created tensors (not results of operations)
+- Gradients are only stored on leaf nodes
+- `x.is_leaf` checks if a tensor is a leaf
+
+### Gradient Accumulation
+- By default, gradients accumulate
+- Must manually zero before each backward: `x.grad.zero_()`
+
+### Computational Graph Release
+- The computational graph is released by default after backward()
+- This saves memory
+- Use `retain_graph=True` if multiple backward passes are needed
+
+### Gradients of Vector Functions
+```python
+x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+y = x ** 2
+
+# Must pass the gradient argument
+y.backward(torch.ones_like(x))
+```
+
+## Mathematical Background
+
+### Chain Rule
+```
+If z = f(g(x))
+Then dz/dx = df/dg * dg/dx
+```
+
+### Example
+```python
+x = 2
+u = 2*x + 1  # u = 5
+z = u**2     # z = 25
+
+# dz/dx = dz/du * du/dx
+#       = 2u * 2
+#       = 2*5*2 = 20
+```
+
+## Practical Tips
+
+### 1. Debugging Gradients
+```python
+# Check if gradient is None
+if x.grad is None:
+    print("Gradient not computed")
+
+# Check gradient values
+print(f"Gradient: {x.grad}")
+
+# Check if gradient contains NaN
+if torch.isnan(x.grad).any():
+    print("Gradient contains NaN!")
+```
+
+### 2. Gradient Clipping
+```python
+# Prevent gradient explosion
+torch.nn.utils.clip_grad_norm_(parameters, max_norm=1.0)
+```
+
+### 3. Freezing Parameters
+```python
+# Parameters that don't need gradients
+for param in model.parameters():
+    param.requires_grad = False
+```
+
+## Practice Tasks
+
+1. **Basic Exercises**
+   - Compute the gradient of f(x) = sin(x^2) at x = π/4
+   - Verify the chain rule: manually compute and compare with autograd
+
+2. **Practical Exercises**
+   - Implement complete linear regression (generate data, train, evaluate)
+   - Try different learning rates and observe convergence speed
+   - Implement momentum SGD
+
+3. **Challenge Exercises**
+   - Implement quadratic function fitting: y = ax^2 + bx + c
+   - Visualize the loss descent curve
+   - Compare different optimization algorithms (SGD, momentum SGD, Adam)
+
+**Reference answers:** See `exercises/day2_answers.py`
+
+## Learning Resources
+
+- [PyTorch Autograd Documentation](https://pytorch.org/docs/stable/autograd.html)
+- [Autograd Tutorial](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html)
+- [Automatic Differentiation in Detail](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
+
+## Common Errors
+
+### 1. Forgetting to Zero Gradients
+```python
+# ❌ Wrong
+loss.backward()
+optimizer.step()  # Gradients will accumulate!
+
+# ✅ Correct
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+```
+
+### 2. Calling backward() on Non-Scalars
+```python
+# ❌ Wrong
+y = x ** 2  # shape: (3,)
+y.backward()  # Error!
+
+# ✅ Correct
+y.backward(torch.ones_like(y))
+```
+
+### 3. Creating Requires-Grad Tensors Under no_grad
+```python
+# ❌ Wrong
+with torch.no_grad():
+    x = torch.tensor([1.0], requires_grad=True)
+    # requires_grad will be ignored
+
+# ✅ Correct
+x = torch.tensor([1.0], requires_grad=True)
+```
+
+## Checklist
+
+After completing today's study, you should be able to:
+- [ ] Understand what automatic differentiation is
+- [ ] Use backward() to compute gradients
+- [ ] Implement basic gradient descent
+- [ ] Understand the concept of computational graphs
+- [ ] Know when to zero gradients
+- [ ] Debug gradient-related issues
+
+**Next Step:** Day 3 - Neural Network Basics (nn.Module)

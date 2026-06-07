@@ -8,17 +8,17 @@ print((arrange_ans))
 print("--"*50)
 x = torch.arange(24).reshape(2, 3, 4)
 
-# 1. 提取第一个"页"的所有数据
+# 1. 提取第一个"页"的所有数据 | 1. Extract all data from the first "page"
 first_page = x[0]
-print("第一个页的数据:\n", first_page)
+print("第一个页的数据 | First page data:\n", first_page)
 
-# 2. reshape成(6, 4)
+# 2. reshape成(6, 4) | 2. Reshape to (6, 4)
 reshaped_x = x.reshape(6, 4)
-print("\nreshape后的结果:\n", reshaped_x)
+print("\nreshape后的结果 | Reshaped result:\n", reshaped_x)
 
-# 3. 计算每列的平均值
+# 3. 计算每列的平均值 | 3. Compute column means
 col_means = reshaped_x.float().mean(dim=0)
-print("\n每列平均值:\n", col_means)
+print("\n每列平均值 | Column means:\n", col_means)
 def f():
     randomtensor=torch.rand(3,4)
     def stand(tensor):
