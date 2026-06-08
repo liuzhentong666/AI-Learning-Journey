@@ -47,6 +47,7 @@ AI-Learning-Journey/
 - [Day 1](daily-logs/2026-05-08.md) — 项目启动，PyTorch 张量基础 ✅
 - [Day 2](daily-logs/2026-05-09.md) — 自动微分与梯度计算 ✅
 - [Day 3](daily-logs/2026-05-24.md) — 神经网络基础 (nn.Module, CNN, MLP, 损失函数, 优化器) ✅
+- [Day 4](daily-logs/2026-06-07.md) — 训练循环与 DataLoader（完整训练循环/DataLoader/训练集验证集拆分） ✅
 
 ## 🎯 本周目标（Week 1）
 
@@ -60,9 +61,9 @@ AI-Learning-Journey/
 **每日任务：**
 - Day 1: 环境搭建 + PyTorch 基础 ✅
 - Day 2: 自动微分与梯度计算 ✅
-- Day 3: 神经网络基础 ✅ ← 当前
-- Day 4: 训练循环与优化器
-- Day 5: MNIST 项目实战（上）
+- Day 3: 神经网络基础 ✅
+- Day 4: 训练循环与优化器 ✅
+- Day 5: MNIST 项目实战（上） ← 当前
 - Day 6: MNIST 项目实战（下）
 - Day 7: 周总结与复习
 
@@ -91,10 +92,10 @@ AI-Learning-Journey/
 
 ## 📊 学习统计
 
-- 学习天数: 3 / 90
+- 学习天数: 4 / 90
 - 完成项目: 0 / 12
-- 代码提交: 6+
-- 学习时长: ~8h
+- 代码提交: 8+
+- 学习时长: ~12h
 
 ## 🏆 里程碑
 
@@ -104,8 +105,8 @@ AI-Learning-Journey/
 
 ---
 
-**最后更新：** 2026-06-07  
-**当前进度：** Week 1 - Day 3
+**最后更新：** 2026-06-08  
+**当前进度：** Week 1 - Day 4
 
 ---
 
@@ -158,6 +159,7 @@ AI-Learning-Journey/
 - [Day 1](daily-logs/2026-05-08.md) — Project Launch, PyTorch Tensor Basics ✅
 - [Day 2](daily-logs/2026-05-09.md) — Autograd & Gradient Computation ✅
 - [Day 3](daily-logs/2026-05-24.md) — Neural Network Basics (nn.Module, CNN, MLP, Loss Functions, Optimizers) ✅
+- [Day 4](daily-logs/2026-06-07.md) — Training Loop & DataLoader (Complete Training Loop/DataLoader/Train-Val Split) ✅
 
 ## 🎯 This Week's Goals (Week 1)
 
@@ -171,9 +173,9 @@ AI-Learning-Journey/
 **Daily Tasks:**
 - Day 1: Environment Setup + PyTorch Basics ✅
 - Day 2: Autograd & Gradient Computation ✅
-- Day 3: Neural Network Basics ✅ ← Current
-- Day 4: Training Loop & Optimizers
-- Day 5: MNIST Project Practice (Part 1)
+- Day 3: Neural Network Basics ✅
+- Day 4: Training Loop & Optimizers ✅
+- Day 5: MNIST Project Practice (Part 1) ← Current
 - Day 6: MNIST Project Practice (Part 2)
 - Day 7: Weekly Summary & Review
 
@@ -202,10 +204,10 @@ AI-Learning-Journey/
 
 ## 📊 Learning Statistics
 
-- Days Studied: 3 / 90
+- Days Studied: 4 / 90
 - Projects Completed: 0 / 12
-- Code Commits: 6+
-- Study Duration: ~8h
+- Code Commits: 8+
+- Study Duration: ~12h
 
 ## 🏆 Milestones
 
@@ -215,5 +217,5 @@ AI-Learning-Journey/
 
 ---
 
-**Last Updated:** 2026-06-07  
-**Current Progress:** Week 1 - Day 3
+**Last Updated:** 2026-06-08  
+**Current Progress:** Week 1 - Day 4
